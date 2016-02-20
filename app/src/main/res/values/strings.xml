@@ -3,4 +3,6 @@
     <string name="title_activity_show_pager">ShowPagerActivity</string>
     <string name="imdb_link">View On IMDB</string>
     <string name="favorite_action">Favorite</string>
+    <string name="open_drawer">Open Menu</string>
+    <string name="close_drawer">Close Menu</string>
 </resources>
