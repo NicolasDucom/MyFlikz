@@ -2,4 +2,5 @@
     <string name="app_name">MyFlikz</string>
     <string name="title_activity_show_pager">ShowPagerActivity</string>
     <string name="imdb_link">View On IMDB</string>
+    <string name="favorite_action">Favorite</string>
 </resources>

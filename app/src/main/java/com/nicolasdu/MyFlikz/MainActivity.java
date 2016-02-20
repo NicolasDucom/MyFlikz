@@ -2,17 +2,19 @@ package com.nicolasdu.MyFlikz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.nicolasdu.MyFlikz.common.adapter.ShowsPagerAdapter;
 import com.nicolasdu.MyFlikz.fragment.ShowsListFragment;
 import com.nicolasdu.MyFlikz.model.Show;
 
 
-public class MainActivity extends AppCompatActivity implements ShowsListFragment.ShowListCallback{
+public class MainActivity extends AppCompatActivity implements ShowsListFragment.ShowListCallback, NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements ShowsListFragment
         final ShowsPagerAdapter showsPagerAdapter = new ShowsPagerAdapter(getSupportFragmentManager(),
                 tabLayout.getTabCount());
         pager.setOffscreenPageLimit(showsPagerAdapter.getCount());
-        System.out.println("TAB COUNT : "+tabLayout.getTabCount());
         pager.setAdapter(showsPagerAdapter);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements ShowsListFragment
             }
         });
 
+
+
     }
 
 
@@ -60,5 +64,10 @@ public class MainActivity extends AppCompatActivity implements ShowsListFragment
         Intent intent = new Intent(this, ShowDetailsActivity.class);
         intent.putExtra("show",show);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 }
