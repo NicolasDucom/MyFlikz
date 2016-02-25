@@ -74,7 +74,6 @@ public class Show implements Serializable,Comparable {
 
     public static List<Show> buildListFromJSONArray(List<Show> showsList, JSONArray showsJson) {
         for(int i = 0; i < showsJson.length(); i++) {
-            System.out.println("Looping : " + i);
             try {
                 JSONObject showJson = showsJson.getJSONObject(i);
                 Show show = new Show(showJson.getString("title"), showJson.getString("plot"));

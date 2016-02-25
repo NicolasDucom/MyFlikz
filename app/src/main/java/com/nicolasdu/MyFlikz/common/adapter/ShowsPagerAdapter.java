@@ -1,12 +1,12 @@
 package com.nicolasdu.MyFlikz.common.adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.nicolasdu.MyFlikz.fragment.ComingSoonFragment;
-import com.nicolasdu.MyFlikz.fragment.InTheatersFragment;
-import com.nicolasdu.MyFlikz.fragment.TopFragment;
+import com.nicolasdu.MyFlikz.fragment.ShowsListFragment;
+import com.nicolasdu.MyFlikz.showsFilter;
 
 /**
  * Created by Nicolas on 2/17/2016.
@@ -22,13 +22,21 @@ public class ShowsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int pos) {
+        Bundle bundle = new Bundle();
+        ShowsListFragment showsListFragment = new ShowsListFragment();
         switch (pos) {
             case 0:
-                return new InTheatersFragment();
+                bundle.putSerializable("filter", showsFilter.IN_THEATERS);
+                showsListFragment.setArguments(bundle);
+                return showsListFragment;
             case 1:
-                return new ComingSoonFragment();
+                bundle.putSerializable("filter", showsFilter.COMING_SOON);
+                showsListFragment.setArguments(bundle);
+                return showsListFragment;
             case 2:
-                return new TopFragment();
+                bundle.putSerializable("filter", showsFilter.TOP);
+                showsListFragment.setArguments(bundle);
+                return showsListFragment;
             default:
                 return null;
         }
